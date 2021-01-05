@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React from 'react';
+import globalData from './../globalData.json'
 
 function AddData(props) {
 
@@ -12,11 +13,11 @@ function AddData(props) {
         formData.append('email', data.email.value);
 
         props.show === 'buffer' ?
-            axios.post('http://localhost:3001/add_dataB',
+            axios.post(globalData.url + '/add_dataB',
                 formData
             ).then((json) => console.log('data:', json))
             :
-            axios.post('http://localhost:3001/add_dataP',
+            axios.post(globalData.url + '/add_dataP',
                 formData
             ).then((json) => console.log('data:', json))
     }

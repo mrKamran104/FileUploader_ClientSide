@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import globalData from './../globalData.json'
 
 function ShowDataB(props) {
 
@@ -7,7 +8,7 @@ function ShowDataB(props) {
 
     useEffect(() => {
         //(async ()=>
-        fetch('http://localhost:3001/b')
+        fetch(globalData.url + '/b')
             .then(response => response.text())
             .then(d => {
                 setData(JSON.parse(d))
@@ -59,7 +60,7 @@ function ShowDataB(props) {
                                 </td> */}
                                 <td>
                                     {v.fileData ?
-                                        <a href={`http://localhost:3001/downloadB/${v.fileName}`} target="_blank" rel="noreferrer" >
+                                        <a href={`${globalData.url}/downloadB/${v.fileName}`} target="_blank" rel="noreferrer" >
                                             <button>Download</button>
                                         </a>
                                         : null}

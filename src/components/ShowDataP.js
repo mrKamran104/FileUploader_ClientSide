@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import globalData from './../globalData.json'
 
 function ShowDataP(props) {
 
@@ -7,7 +8,7 @@ function ShowDataP(props) {
 
     useEffect(() => {
         //(async ()=>
-        fetch('http://localhost:3001/p')
+        fetch(globalData.url + '/p')
             .then(response => response.text())
             .then(d => {
                 setData(JSON.parse(d))
@@ -40,22 +41,22 @@ function ShowDataP(props) {
                                 </td>
                                 <td>
                                     {v.filePath.contentType.includes('image') ?
-                                        <img src={`http://localhost:3001/uploads/${v.fileName}`} alt='monogo_images' height='220' width='240' />
+                                        <img src={`${globalData.url}/uploads/${v.fileName}`} alt='monogo_images' height='220' width='240' />
                                         : null}
                                     {v.filePath.contentType.includes('application') ?
-                                        <embed src={`http://localhost:3001/uploads/${v.fileName}`} width="200px" height="240px" />
+                                        <embed src={`${globalData.url}/uploads/${v.fileName}`} width="200px" height="240px" />
                                         : null}
                                     {v.filePath.contentType.includes('audio') ?
-                                        <audio src={`http://localhost:3001/uploads/${v.fileName}`} width="200px" height="240px" controls/>
+                                        <audio src={`${globalData.url}/uploads/${v.fileName}`} width="200px" height="240px" controls/>
                                         : null}
                                     {v.filePath.contentType.includes('video') ?
-                                        <video src={`http://localhost:3001/uploads/${v.fileName}`} width="200px" height="240px" controls/>
+                                        <video src={`${globalData.url}/uploads/${v.fileName}`} width="200px" height="240px" controls/>
                                         : null}
 
                                 </td>
                                 <td>
                                     {v.filePath ?
-                                        <a href={`http://localhost:3001/downloadP/${v.fileName}`} target="_blank" rel="noreferrer" >
+                                        <a href={`${globalData.url}/downloadP/${v.fileName}`} target="_blank" rel="noreferrer" >
                                             <button>Download</button>
                                         </a>
                                         : null}
